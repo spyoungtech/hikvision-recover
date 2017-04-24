@@ -3,32 +3,31 @@ import argparse
 def rshift(val, n):
     return (val % 0x100000000) >> n
 
-def get_code(serial, year, month, day):
-    magic_number = 0
-    serial = serial + year + month + day
-    for index, char in enumerate(serial):
-        magic_number += ord(char) * (index + 1) ^ (index + 1)
+def char_shift(char):
+    c = ord(char)
+    shifts = {
+        range(0, 51): 33,
+        range(51, 53): 62,
+        range(53, 55): 47,
+        range(55, 57): 66
+    }
 
+    for r, value in shifts.items():
+        if c in r:
+            return chr(c + value)
+    else:
+        return char
+
+
+def get_code(serial, year, month, day):
+    serial = serial + year + month + day
+    magic_number = sum(ord(char) * index ^ index for index, char in enumerate(serial, 1))
     magic_number *= 1751873395
     magic_number = rshift(magic_number, 0)
-    magic_word = str(magic_number)
+    recovery_code = ''.join(char_shift(digit) for digit in str(magic_word))
 
-    serial_code = ""
+    return recovery_code
 
-    for char in magic_word:
-        c = ord(char)
-
-        if c < 51:
-            serial_code += chr(c + 33)
-        elif c < 53:
-            serial_code += chr(c + 62)
-        elif c < 55:
-            serial_code += chr(c + 47)
-        elif c < 57:
-            serial_code += chr(c + 66)
-        else:
-            serial_code += chr(c)
-    return serial_code
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Generates recovery key for Hikvision cameras')
@@ -38,5 +37,5 @@ if __name__ == "__main__":
     parser.add_argument('day', help='2 digit day of current camera time')
     args = parser.parse_args()
 
-    serial = get_code(args.serial, args.year, args.month, args.day)
-    print(serial)
+    recovery_code = get_code(args.serial, args.year, args.month, args.day)
+    print(recovery_code)
