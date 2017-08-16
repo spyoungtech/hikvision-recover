@@ -24,7 +24,7 @@ def get_code(serial, year, month, day):
     magic_number = sum(ord(char) * index ^ index for index, char in enumerate(serial, 1))
     magic_number *= 1751873395
     magic_number = rshift(magic_number, 0)
-    recovery_code = ''.join(char_shift(digit) for digit in str(magic_word))
+    recovery_code = ''.join(char_shift(digit) for digit in str(magic_number))
 
     return recovery_code
 
