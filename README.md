@@ -17,3 +17,8 @@ positional arguments:
 
 optional arguments:
   -h, --help  show help message and exit
+
+e.g. 
+```
+python3 hikvision_recover.py DS-ABC1234567-HIJKLMNOPQRS10987654321 2017 01 25
+```
