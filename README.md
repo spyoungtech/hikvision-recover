@@ -48,8 +48,8 @@ serial = "DS-ABC1234567-HIJKLMNOPQRS10987654321"
 year = "2017"
 month = "01"
 day = "25"
-revoery_code = get_code(serial, year, month, day)
-print(revoery_code)
+recovery_code = get_code(serial, year, month, day)
+print(recovery_code)
 
 ```
 
