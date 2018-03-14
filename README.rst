@@ -11,11 +11,10 @@ To do this you need the camera's serial number and current time reported by the 
 Installation
 ------------
 
-You can install via pip
+You can install via pip::
 
-```bash
-pip install hikvision-recover
-```
+
+   pip install hikvision-recover
 
 Usage 
 -----
