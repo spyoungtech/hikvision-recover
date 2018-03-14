@@ -5,7 +5,7 @@ with open('README.rst', 'rt', encoding='utf8') as f:
 
 setup(
     name='hikvision-recover',
-    version='1.0',
+    version='1.0.1',
     url='https://github.com/spyoungtech/hikvision-recover/',
     license='MIT',
     author='Spencer Young',
