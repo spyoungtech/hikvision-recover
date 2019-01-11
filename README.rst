@@ -19,7 +19,7 @@ You can install via pip::
 Usage 
 -----
 
-After installing via pip, the command line entry point `hikvision-recover` is available. The syntax for the command is ::
+After installing via pip, the command line entry point ``hikvision-recover`` is available. The syntax for the command is ::
 
    hikvision-recover serial year month day
 
