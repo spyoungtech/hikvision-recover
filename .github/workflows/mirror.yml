@@ -24,5 +24,5 @@ jobs:
       with:
         REMOTE: git@gitlab.com:spyoungtech/hikvision-recover.git
         GIT_SSH_PRIVATE_KEY: ${{ secrets.GIT_SSH_KEY }}
-        GIT_SSH_NO_VERIFY_HOST: true
+        GIT_SSH_NO_VERIFY_HOST: false
         DEBUG: "true"
